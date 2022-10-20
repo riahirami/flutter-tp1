@@ -29,11 +29,67 @@ class MyApp extends StatelessWidget {
                   size: 32.0,
                   semanticLabel: 'Text to announce in accessibility modes',
                 ),
-                Image(
-                  image: NetworkImage(
-                      'https://i.postimg.cc/6pwFSD7n/Capture-1.png'),
+                // Image(
+                //   image: NetworkImage(
+                //       'https://i.postimg.cc/6pwFSD7n/Capture-1.png'),
+                // ),
+                Image.asset('/Capture.png'),
+                Container(
+                  padding: const EdgeInsets.all(32.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text("École pluridisciplinaire internationale",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            Text(
+                              '#EPI',
+                              style: TextStyle(color: Colors.black),
+                            )
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: <Widget>[Icon(Icons.star), Text('4100')],
+                      ),
+                    ],
+                  ),
                 ),
-                Image.asset('images/logo-ecommerce.png')
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Icon(Icons.call, color: Colors.blue),
+                      Container(
+                          child: Text(
+                        'Call',
+                        style: TextStyle(color: Colors.blue),
+                        textAlign: TextAlign.center,
+                      )),
+                      Icon(Icons.ios_share, color: Colors.blue),
+                      Text(
+                        'Share',
+                        style: TextStyle(color: Colors.blue),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(32.0),
+                  child: Wrap(
+                    children: <Widget>[
+                      Text(
+                        'Lorem ips tempor incididunt ut labore et dolore magna aliqua. Ut enim aincididunt ut labore et dolincididunt ut labore et dolore magnaore magnad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex',
+                        style: TextStyle(fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                        overflow: TextOverflow.visible,
+                      )
+                    ],
+                  ),
+                )
               ],
             )));
   }
