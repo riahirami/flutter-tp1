@@ -7,9 +7,23 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  Widget _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      children: <Widget>[
+        Icon(icon, color: color),
+        Container(
+            child: Text(
+          label,
+          style: TextStyle(fontWeight: FontWeight.bold, color: color),
+        ))
+      ],
+    );
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Color color = Theme.of(context).primaryColor;
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
@@ -61,35 +75,19 @@ class MyApp extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Icon(Icons.call, color: Colors.blue),
-                      Container(
-                          child: Text(
-                        'Call',
-                        style: TextStyle(color: Colors.blue),
-                        textAlign: TextAlign.center,
-                      )),
-                      Icon(Icons.ios_share, color: Colors.blue),
-                      Text(
-                        'Share',
-                        style: TextStyle(color: Colors.blue),
-                        textAlign: TextAlign.center,
-                      ),
+                      _buildButtonColumn(color, Icons.call, "Call"),
+                      _buildButtonColumn(color, Icons.share, "Share")
                     ],
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.all(32.0),
-                  child: Wrap(
-                    children: <Widget>[
-                      Text(
-                        'Lorem ips tempor incididunt ut labore et dolore magna aliqua. Ut enim aincididunt ut labore et dolincididunt ut labore et dolore magnaore magnad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex',
-                        style: TextStyle(fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.left,
-                        overflow: TextOverflow.visible,
-                      )
-                    ],
-                  ),
-                )
+                    padding: EdgeInsets.all(32.0),
+                    child: Text(
+                      'Lorem ips adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l tempor t ut labore et dolincididunt ut labore et dolore magnaore magnad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex',
+                      style: TextStyle(fontWeight: FontWeight.normal),
+                      textAlign: TextAlign.left,
+                      softWrap: true,
+                    )),
               ],
             )));
   }
