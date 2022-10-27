@@ -7,25 +7,89 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  Widget _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      children: <Widget>[
+        Icon(icon, color: color),
+        Container(
+            child: Text(
+          label,
+          style: TextStyle(fontWeight: FontWeight.bold, color: color),
+        ))
+      ],
+    );
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Color color = Theme.of(context).primaryColor;
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text("Flutter training EP1"),
+            ),
+            body: Column(
+              children: <Widget>[
+                Text(
+                  'Hello Rami How are you?',
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Icon(
+                  Icons.favorite,
+                  color: Color.fromARGB(255, 13, 63, 212),
+                  size: 32.0,
+                  semanticLabel: 'Text to announce in accessibility modes',
+                ),
+                // Image(
+                //   image: NetworkImage(
+                //       'https://i.postimg.cc/6pwFSD7n/Capture-1.png'),
+                // ),
+                Image.asset('/Capture.png'),
+                Container(
+                  padding: const EdgeInsets.all(32.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text("École pluridisciplinaire internationale",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            Text(
+                              '#EPI',
+                              style: TextStyle(color: Colors.black),
+                            )
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: <Widget>[Icon(Icons.star), Text('4100')],
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      _buildButtonColumn(color, Icons.call, "Call"),
+                      _buildButtonColumn(color, Icons.share, "Share")
+                    ],
+                  ),
+                ),
+                Container(
+                    padding: EdgeInsets.all(32.0),
+                    child: Text(
+                      'Lorem ips adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l tempor t ut labore et dolincididunt ut labore et dolore magnaore magnad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex',
+                      style: TextStyle(fontWeight: FontWeight.normal),
+                      textAlign: TextAlign.left,
+                      softWrap: true,
+                    )),
+              ],
+            )));
   }
 }
 
